@@ -1,0 +1,209 @@
+import React, { useState, useEffect } from 'react';
+import { 
+  Zap, 
+  Battery, 
+  Brain, 
+  TrendingUp, 
+  CheckCircle, 
+  ArrowRight, 
+  ShieldAlert, 
+  MousePointerClick,
+  Monitor,
+  Activity
+} from 'lucide-react';
+
+const App = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-cyan-500 selection:text-white">
+      {/* Navigation */}
+      <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-slate-950/90 backdrop-blur-md border-b border-slate-800 py-3' : 'bg-transparent py-5'}`}>
+        <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <Zap className="text-cyan-400 fill-cyan-400" size={24} />
+            <span className="font-black text-xl tracking-tighter uppercase italic">BioHacker Pro</span>
+          </div>
+          <button className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-5 py-2 rounded-full text-sm transition-all transform hover:scale-105 active:scale-95">
+            立即獲取
+          </button>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.15)_0%,transparent_70%)] pointer-events-none"></div>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-700 text-cyan-400 text-xs font-bold mb-6 tracking-widest uppercase">
+            <Activity size={14} /> 創作者性能優化協定 v1.0
+          </div>
+          <h1 className="text-5xl md:text-7xl font-black mb-8 leading-[1.1] tracking-tight">
+            停止用<span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">健康換流量</span><br />
+            奪回你的高效產出
+          </h1>
+          <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+            專為不想斷更、拒絕腦霧的品牌創作者設計。用不到 2 杯咖啡的價格，換取支撐你品牌運作 <span className="text-white font-semibold italic">10 年的續航力</span>。
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button className="w-full sm:w-auto bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-8 py-4 rounded-xl text-lg flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(34,211,238,0.4)]">
+              立即獲取創作者續航方案 <ArrowRight size={20} />
+            </button>
+            <div className="text-slate-500 text-sm font-medium">
+              單次付費 HK$ 29.9 | 即刻解鎖
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pain Points Section */}
+      <section className="py-20 bg-slate-900/50">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="p-8 rounded-2xl bg-slate-950 border border-slate-800 hover:border-red-500/50 transition-colors group">
+              <ShieldAlert className="text-red-500 mb-4 group-hover:scale-110 transition-transform" size={32} />
+              <h3 className="text-xl font-bold mb-3">晨間能量乾涸</h3>
+              <p className="text-slate-400 text-sm leading-relaxed">每天起床就覺得累，靈魂像被抽乾，只能靠大劑量咖啡因強撐到下午？</p>
+            </div>
+            <div className="p-8 rounded-2xl bg-slate-950 border border-slate-800 hover:border-red-500/50 transition-colors group">
+              <Brain className="text-red-500 mb-4 group-hover:scale-110 transition-transform" size={32} />
+              <h3 className="text-xl font-bold mb-3">高頻腦霧襲擊</h3>
+              <p className="text-slate-400 text-sm leading-relaxed">有靈感卻沒體力寫，看著空白文檔發呆。你的硬體（身體）正在拖累你的軟體（才華）。</p>
+            </div>
+            <div className="p-8 rounded-2xl bg-slate-950 border border-slate-800 hover:border-red-500/50 transition-colors group">
+              <TrendingUp className="text-red-500 mb-4 group-hover:scale-110 transition-transform" size={32} />
+              <h3 className="text-xl font-bold mb-3">品牌資產縮水</h3>
+              <p className="text-slate-400 text-sm leading-relaxed">擔心身體垮了，累積三年的個人品牌隨之消失？你正在透支你的核心資產。</p>
+            </div>
+          </div>
+          <div className="mt-12 p-6 rounded-xl bg-red-500/10 border border-red-500/20 text-center">
+            <p className="text-red-400 font-bold uppercase tracking-widest text-sm">殘酷結論：你的體能就是你品牌的「伺服器」，而你的伺服器正在過熱宕機。</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Product Content (The Offer) */}
+      <section className="py-24 px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-black mb-16 text-center italic tracking-tighter">
+            THE SYSTEM: 第一層級「低價入口」懶人包
+          </h2>
+          
+          <div className="space-y-6">
+            <div className="flex flex-col md:flex-row gap-6 p-8 rounded-3xl bg-slate-900 border border-slate-800 items-start hover:bg-slate-800/50 transition-all">
+              <div className="p-3 bg-cyan-500/10 rounded-xl text-cyan-400">
+                <CheckCircle size={28} />
+              </div>
+              <div>
+                <h4 className="text-xl font-bold mb-2">【流量入口檢查清單】</h4>
+                <p className="text-slate-400 mb-4">5 分鐘自我診斷：精準揪出讓你創作者職業生涯縮短的 3 個致命習慣。停止隱形成本的流失。</p>
+                <span className="text-xs font-bold py-1 px-3 bg-slate-800 text-cyan-400 rounded-full">即學即用</span>
+              </div>
+            </div>
+
+            <div className="flex flex-col md:flex-row gap-6 p-8 rounded-3xl bg-slate-900 border border-slate-800 items-start hover:bg-slate-800/50 transition-all">
+              <div className="p-3 bg-cyan-500/10 rounded-xl text-cyan-400">
+                <Battery size={28} />
+              </div>
+              <div>
+                <h4 className="text-xl font-bold mb-2">【單頁指南：高效能協定】</h4>
+                <p className="text-slate-400 mb-4">生物駭客作息表與飲食清單：如何在不犧牲產出的情況下，穩定血糖與精力。這是你的硬體操作手冊。</p>
+                <span className="text-xs font-bold py-1 px-3 bg-slate-800 text-cyan-400 rounded-full">硬體優化</span>
+              </div>
+            </div>
+
+            <div className="flex flex-col md:flex-row gap-6 p-8 rounded-3xl bg-slate-900 border border-slate-800 items-start hover:bg-slate-800/50 transition-all">
+              <div className="p-3 bg-cyan-500/10 rounded-xl text-cyan-400">
+                <Monitor size={28} />
+              </div>
+              <div>
+                <h4 className="text-xl font-bold mb-2">【低價範本：精力日誌系統】</h4>
+                <p className="text-slate-400 mb-4">創作者專屬「精力監控」模板：紀錄並優化你的高效時段，把最貴的腦力留給最重要的決策。</p>
+                <span className="text-xs font-bold py-1 px-3 bg-slate-800 text-cyan-400 rounded-full">數據化管理</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Core Value (Strategy) */}
+      <section className="py-24 bg-cyan-600">
+        <div className="max-w-4xl mx-auto px-6 text-slate-950">
+          <div className="flex items-center gap-4 mb-8">
+            <div className="h-1 w-12 bg-slate-950"></div>
+            <span className="font-black uppercase tracking-widest text-sm">核心價值：為什麼我賣 29.9?</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-black mb-8 leading-tight">
+            不只是養生，<br />這是「懶人包變現」的底層邏輯
+          </h2>
+          <div className="grid md:grid-cols-2 gap-10">
+            <div>
+              <p className="font-bold text-xl mb-4 italic">【獨家策略分析】</p>
+              <p className="text-slate-900/80 leading-relaxed font-medium">
+                這份產品本身就是一個範例。我將拆解：個人品牌數位產品的「高轉化懶人包」生態系統。為什麼「低價引流品」是獲客最快的路徑？
+              </p>
+            </div>
+            <div className="bg-slate-950/10 p-6 rounded-2xl border border-slate-950/20">
+              <p className="font-bold mb-2">獲客邏輯：</p>
+              <ul className="space-y-2 font-medium">
+                <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-slate-950 rounded-full"></div> 降低信任門檻，實現衝動購買</li>
+                <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-slate-950 rounded-full"></div> 建立品牌第一道「專業防線」</li>
+                <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-slate-950 rounded-full"></div> 為高客單價產品鋪路 (Upsell)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-32 px-6 text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+        <div className="max-w-3xl mx-auto relative z-10">
+          <div className="mb-10 inline-block p-4 rounded-full bg-slate-900 border border-slate-800 shadow-2xl">
+            <Zap className="text-cyan-400" size={48} />
+          </div>
+          <h2 className="text-4xl md:text-6xl font-black mb-6">
+            買一個不間斷<br />產出的「保險」
+          </h2>
+          <p className="text-slate-400 text-lg mb-12">
+            不要等到系統徹底崩潰才來修復。現在就優化你的硬體性能。
+          </p>
+          
+          <div className="bg-slate-900 border border-slate-800 p-10 rounded-[3rem] shadow-2xl inline-block w-full max-w-md transition-transform hover:scale-[1.02]">
+            <div className="text-slate-500 uppercase font-black text-xs tracking-[0.3em] mb-4 text-center">LIMITED TIME OFFER</div>
+            <div className="flex items-end justify-center gap-2 mb-8">
+              <span className="text-slate-500 text-2xl font-bold line-through">HK$ 199</span>
+              <span className="text-6xl font-black text-white">HK$ 29.9</span>
+            </div>
+            <button className="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black py-5 rounded-2xl text-xl flex items-center justify-center gap-3 transition-all">
+              <MousePointerClick size={24} /> 立即獲取續航方案
+            </button>
+            <p className="text-slate-500 text-sm mt-6 font-medium uppercase tracking-widest">
+              付款後立即下載 PDF 與 模板
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-12 border-t border-slate-900">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex items-center gap-2 grayscale opacity-50">
+            <Zap size={20} />
+            <span className="font-black text-lg tracking-tighter uppercase italic">BioHacker Pro</span>
+          </div>
+          <div className="text-slate-600 text-sm font-medium">
+            © 2026 高效能創作者實驗室. All rights reserved.
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default App;
